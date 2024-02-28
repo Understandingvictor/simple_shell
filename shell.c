@@ -10,7 +10,7 @@ void process(char *command)
 	char *token;
 	char *args[buffersize];
 	int i = 0;
-	int status, returned;
+	int status;
 	pid_t pid;
 
 	token = strtok(command, " ");
@@ -120,7 +120,7 @@ void nonInteractiveMode(char *filename)
   *@ag: argument vector
   *Return: 1 on success
   */
-void main(int ac, char *ag[])
+int main(int ac, char *ag[])
 {
 	if (ac == 1)
 	{
@@ -135,4 +135,5 @@ void main(int ac, char *ag[])
 	{
 		dprintf(2, "error in arguments\n");
 	}
+	return (0);
 }
