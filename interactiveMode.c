@@ -14,6 +14,7 @@ void interactiveMode(void)
 		while (1)
 		{
 			printf("#cisfun$ ");
+			fflush(stdout);
 			read = getline(&command, &len, stdin);
 			if (read == -1)
 			{

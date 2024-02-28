@@ -5,16 +5,8 @@
   *Return: 0 oon success
   */
 #include "main.h"
-int main(int ac, char *ag[])
+int main(void)
 {
-	(void)ag;
-	if (ac == 1)
-	{
-		interactiveMode();
-	}
-	else
-	{
-		dprintf(2, "error in arguments\n");
-	}
+	interactiveMode();	
 	return (0);
 }
