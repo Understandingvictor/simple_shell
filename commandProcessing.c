@@ -22,14 +22,14 @@ void process(char *command)
 	args[i] = NULL;
 	if (i > 1)
 	{
-		printf("No such file or directory\n");
+		dprintf(2, "./shell: No such file or directory\n");
 		return;
 	}
 	pid = fork();
 	if (pid == 0)
 	{
 		if ((execve(args[0], args, NULL)) == -1)
-			dprintf(2, "shell: 1; %s: not found\n", args[0]);
+			dprintf(2, "./shell: No such file or directory\n");
 	}
 	else
 	{
