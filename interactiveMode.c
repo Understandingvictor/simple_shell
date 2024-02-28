@@ -18,6 +18,7 @@ void interactiveMode(void)
 			read = getline(&command, &len, stdin);
 			if (read == -1)
 			{
+				free(command);
 				return;
 			}
 			if (read > 1)
@@ -26,18 +27,21 @@ void interactiveMode(void)
 				process(command);
 			}
 		}
-	free(command);
 	}
 	else
 	{
 		printf("#cisfun$ ");
 		read = getline(&command, &len, stdin);
 		if (read == -1)
+		{
+			free(command);
 			return;
+		}
 		if (read > 1)
 		{
 			command[strcspn(command, "\n")] = '\0';
 			process(command);
 		}
 	}
+	free(command);
 }
