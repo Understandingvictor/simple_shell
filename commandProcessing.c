@@ -20,16 +20,7 @@ char **process(char *command)
 	token = strtok(command, " ");
 	while (token != NULL)
 	{
-		if (i >= 0 && i < 1)
-		{
-			args[i] = token;
-		}
-		else
-		{
-			printf("Error");
-			free(args);
-			exit(EXIT_FAILURE);
-		} 
+		args[i] = token;
 		token = strtok(NULL, " ");
 		i++;
 	}	
