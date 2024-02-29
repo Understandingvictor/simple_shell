@@ -8,23 +8,13 @@ void process(char *command)
 {
 	char *token;
 	char *args[buffersize];
-	int i = 0;
 	int status;
 	pid_t pid;
 
 	token = strtok(command, " ");
-	while (token != NULL)
-	{
-		args[i] = token;
-		token = strtok(NULL, " ");
-		i++;
-	}
-	args[i] = NULL;
-	if (i > 1)
-	{
-		dprintf(2, "./shell: No such file or directory\n");
-		return;
-	}
+	args[0] = token;	
+	args[1] = NULL;
+
 	pid = fork();
 	if (pid == 0)
 	{
