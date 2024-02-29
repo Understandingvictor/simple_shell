@@ -7,6 +7,14 @@
 #include "main.h"
 int main(void)
 {
-	interactiveMode();	
+while(1)
+{
+	char *command;
+	char **arguments;
+
+	command = interactiveMode();
+	arguments = process(command);
+	executeCommand(arguments);
+}
 	return (0);
 }

@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
-void interactiveMode(void);
-void process(char *command);
+void executeCommand(char **arguments);
+char *interactiveMode(void);
+char **process(char *command);
 #endif

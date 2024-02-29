@@ -3,7 +3,7 @@
  *Return: 0 upon completion
  */
 #include "main.h"
-void interactiveMode(void)
+char *interactiveMode(void)
 {
 	char *command = NULL;
 	size_t len = 0;
@@ -11,21 +11,19 @@ void interactiveMode(void)
 
 	if (isatty(fileno(stdin)))
 	{
-		while (1)
+		printf("#cisfun$ ");
+		fflush(stdout);
+		read = getline(&command, &len, stdin);
+		if (read == -1)
 		{
-			printf("#cisfun$ ");
-			fflush(stdout);
-			read = getline(&command, &len, stdin);
-			if (read == -1)
-			{
-				free(command);
-				return;
-			}
-			if (read > 1)
-			{
-				command[strcspn(command, "\n")] = '\0';
-				process(command);
-			}
+			free(command);
+			perror("isatty read");
+			exit(EXIT_FAILURE);
+		}
+		if (read > 1)
+		{
+			command[strcspn(command, "\n")] = '\0';
+			return (command);
 		}
 	}
 	else
@@ -35,13 +33,14 @@ void interactiveMode(void)
 		if (read == -1)
 		{
 			free(command);
-			return;
+			perror("!isatty read");
+			exit(EXIT_FAILURE);
 		}
 		if (read > 1)
 		{
 			command[strcspn(command, "\n")] = '\0';
-			process(command);
+			return (command);
 		}
 	}
-	free(command);
+return (NULL);
 }
