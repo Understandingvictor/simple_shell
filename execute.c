@@ -26,7 +26,7 @@ void executeCommand(char **arguments)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else 
+	else
 	{
 		if ((waitpid(pid, &status, 0)) == -1)
 		{

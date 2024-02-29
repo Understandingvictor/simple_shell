@@ -16,15 +16,15 @@ char **process(char *command)
 		perror("malloc");
 		exit(-1);
 	}
-	
+
 	token = strtok(command, " ");
 	while (token != NULL)
 	{
 		args[i] = token;
 		token = strtok(NULL, " ");
 		i++;
-	}	
+	}
 	args[i] = NULL;
-	
+
 	return (args);
 }
