@@ -12,7 +12,15 @@ while (1)
 	char **arguments;
 
 	command = interactiveMode();
+
 	arguments = process(command);
+	
+	if (strcmp(arguments[0], "exit") == 0)
+	{
+		free(command);
+		free(arguments);
+		exit(EXIT_SUCCESS);
+	}
 
 	free(command2);
 
