@@ -1,28 +1,38 @@
 /**
   *executeCommand - executes the command
-  *@arguments
+  *@arguments: parameter
   *Return: 0 on completion
   */
 
 #include "main.h"
 
-void executeCommand(char **arguments)
+int executeCommand(char **arguments)
 {
 	pid_t pid;
 	int status;
+	char *path;
+	char *path_copy;
+	size_t path_length;
+	char **envp;
+
+	path = getenv("PATH");
+	path_copy = strdup(path);
+	envp = malloc(sizeof(char *) + 2);
+	envp[0] = path_copy;
+	envp[1] = NULL;
 
 	pid = fork();
 
 	if (pid == -1)
 	{
-		perror("./shell");
+		perror("pid");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
-		if ((execve(arguments[0], arguments, NULL)) == -1)
+		if ((execve(arguments[0], arguments, envp)) == -1)
 		{
-			perror("./shell");
+			perror("excecve");
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -34,4 +44,5 @@ void executeCommand(char **arguments)
 			exit(EXIT_FAILURE);
 		}
 	}
+	return (0);
 }

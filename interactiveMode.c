@@ -16,7 +16,6 @@ char *interactiveMode(void)
 		read = getline(&command, &len, stdin);
 		if (read == -1)
 		{
-			free(command);
 			perror("isatty read");
 			exit(EXIT_FAILURE);
 		}
@@ -28,11 +27,9 @@ char *interactiveMode(void)
 	}
 	else
 	{
-		printf("#cisfun$ ");
 		read = getline(&command, &len, stdin);
 		if (read == -1)
 		{
-			free(command);
 			perror("!isatty read");
 			exit(EXIT_FAILURE);
 		}
@@ -42,5 +39,6 @@ char *interactiveMode(void)
 			return (command);
 		}
 	}
+free(command);
 return (NULL);
 }

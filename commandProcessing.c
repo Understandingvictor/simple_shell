@@ -14,13 +14,19 @@ char **process(char *command)
 	if (args == NULL)
 	{
 		perror("malloc");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 	token = strtok(command, " ");
 	while (token != NULL)
 	{
-		args[i] = token;
+		args[i] = strdup(token);
+
+		if (args[i] == NULL)
+		{
+			perror("strdup");
+			exit(EXIT_FAILURE);
+		}
 		token = strtok(NULL, " ");
 		i++;
 	}
