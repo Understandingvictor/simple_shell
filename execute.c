@@ -12,7 +12,6 @@ int executeCommand(char **arguments)
 	int status;
 	char *path;
 	char *path_copy;
-	size_t path_length;
 	char **envp;
 
 	path = getenv("PATH");

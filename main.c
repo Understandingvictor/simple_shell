@@ -10,7 +10,6 @@ while (1)
 	char *command;
 	char *command2;
 	char **arguments;
-	char *path;
 
 	command = interactiveMode();
 	arguments = process(command);
