@@ -14,7 +14,7 @@ while (1)
 	command = interactiveMode();
 
 	arguments = process(command);
-	
+
 	if (strcmp(arguments[0], "exit") == 0)
 	{
 		free(command);
