@@ -5,12 +5,16 @@
 #include "main.h"
 void printenv()
 {
-	extern char **environ;
-	unsigned int i = 0;
+	char *env_var;
+	int i;
 
-	while (environ[i] != NULL)
+	for (i = 0; ; i++)
 	{
-		printf("%s\n", environ[i]);
-		i++;
+		env_var = getenv("environ");
+		if (env_var == NULL)
+		{
+			break;
+		}
+		printf("%s\n", env_var);
 	}
 }
