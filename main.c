@@ -21,6 +21,8 @@ while (1)
 		free(arguments);
 		exit(EXIT_SUCCESS);
 	}
+	if (strcmp(arguments[0], "env") == 0)
+		printenv();
 
 	free(command2);
 

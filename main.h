@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/wait.h>
 char *search_path(char *command);
+void printenv();
 int executeCommand(char **arguments);
 char *interactiveMode(void);
 char **process(char *command);
